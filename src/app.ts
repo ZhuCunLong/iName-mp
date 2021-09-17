@@ -1,20 +1,23 @@
-import { Component } from 'react'
+import { useEffect } from 'react'
+
+// Taro 额外添加的 hooks 要从 '@tarojs/taro' 中引入
+import { useDidShow, useDidHide } from '@tarojs/taro'
+
+// 全局样式
 import './app.less'
 
-class App extends Component {
 
-  componentDidMount () {}
+function App (props) {
+  // 可以使用所有的 React Hooks
+  useEffect(() => {})
 
-  componentDidShow () {}
+  // 对应 onShow
+  useDidShow(() => {})
 
-  componentDidHide () {}
+  // 对应 onHide
+  useDidHide(() => {})
 
-  componentDidCatchError () {}
-
-  // this.props.children 是将要会渲染的页面
-  render () {
-    return this.props.children
-  }
+  return props.children
 }
 
 export default App
