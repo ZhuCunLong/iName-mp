@@ -15,7 +15,7 @@ const Index: React.FC = () => {
   return (
     <View className='page'>
       <View className='page-container'>
-        <View style={{ lineHeight: 2 }}>来取个好听的名字吧！</View>
+        <View className='mb-20'>来取个好听的名字吧！</View>
         <AtButton type='primary' onClick={goToOption}>GO！</AtButton>
       </View>
     </View>

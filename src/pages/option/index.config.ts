@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '输入相关信息'
+  navigationBarTitleText: '金庸取名'
 }
