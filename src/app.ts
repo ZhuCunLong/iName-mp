@@ -8,7 +8,7 @@ import './app.less'
 
 
 
-function App (props) {
+function App (props: any) {
   // 可以使用所有的 React Hooks
   useEffect(() => {})
 

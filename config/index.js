@@ -1,3 +1,6 @@
+
+const path = require('path')
+
 const config = {
   projectName: 'iName-mp',
   date: '2021-9-11',
@@ -10,7 +13,8 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: [],
-  defineConstants: {
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src')
   },
   copy: {
     patterns: [

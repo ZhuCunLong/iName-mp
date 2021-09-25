@@ -15,6 +15,7 @@ module.exports = {
     'no-multi-spaces': 2, //不能用多余的空格
     'no-irregular-whitespace': 2, //不能有不规则的空格
     'object-curly-spacing': [2, 'always'], //大括号内是否允许不必要的空格
-    'space-before-blocks': [2, 'always']
+    'space-before-blocks': [2, 'always'],
+    'import/no-commonjs': 0
   }
 }

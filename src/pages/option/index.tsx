@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Picker } from '@tarojs/components'
-import { AtForm, AtInput, AtButton, AtList, AtListItem } from 'taro-ui'
+import { AtForm, AtInput, AtButton } from 'taro-ui'
+import Select from '@/components/Select'
 
 const Option: React.FC = () => {
   const [firstName, setFirstName] = useState('')
-  const [country, setCountry] = useState('中国')
+  const [country, setCountry] = useState('China')
 
   const handleSubmit = () => {
     console.log('表单提交')
@@ -14,11 +14,10 @@ const Option: React.FC = () => {
     console.log('表单重置')
   }
 
-  const range = ['中国', '美国', '英国']
+  const range = [{ key: 'China', title: '中国' },
+    { key: 'American', title: '美国' }]
 
-  const handleChange = (e) => {
-    setCountry(range[e.detail.value])
-  }
+  // const range = ['中国', '美国']
 
   return (
     <>
@@ -34,15 +33,13 @@ const Option: React.FC = () => {
           value={firstName}
           onChange={value => setFirstName(value as string)}
         />
-        <Picker mode='selector' range={range} onChange={handleChange}>
-          <AtList>
-            <AtListItem
-              title='国家地区'
-              arrow='down'
-              extraText={country}
-            />
-          </AtList>
-        </Picker>
+        <Select
+          title='国家地区'
+          value={country}
+          optionList={range}
+          onChange={setCountry}
+          labelField='title'
+        />
         <AtButton type='primary' onClick={handleSubmit}>提交</AtButton>
         <AtButton formType='reset'>重置</AtButton>
       </AtForm>
