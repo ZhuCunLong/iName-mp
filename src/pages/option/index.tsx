@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { AtForm, AtInput, AtButton } from 'taro-ui'
+import { AtForm, AtInput, AtButton, AtModal } from 'taro-ui'
 import Select from '@/components/Select'
+import { radicalList } from '@/constants'
 
 const Option: React.FC = () => {
-  const [firstName, setFirstName] = useState('')
-  const [country, setCountry] = useState('China')
+  const [lastName, setLastName] = useState('')
+  const [radical, setRadical] = useState('')
 
   const handleSubmit = () => {
     console.log('表单提交')
@@ -14,34 +15,26 @@ const Option: React.FC = () => {
     console.log('表单重置')
   }
 
-  const range = [{ key: 'China', title: '中国' },
-    { key: 'American', title: '美国' }]
-
-  // const range = ['中国', '美国']
-
   return (
     <>
-      <AtForm
-        onSubmit={handleSubmit}
-        onReset={handleRest}
-      >
+      <AtForm>
         <AtInput
-          name='value'
+          name='lastName'
           title='姓氏'
           type='text'
           placeholder='请输入姓氏'
-          value={firstName}
-          onChange={value => setFirstName(value as string)}
+          value={lastName}
+          onChange={value => setLastName(value as string)}
         />
         <Select
-          title='国家地区'
-          value={country}
-          optionList={range}
-          onChange={setCountry}
-          labelField='title'
+          title='偏旁'
+          value={radical}
+          optionList={radicalList}
+          onChange={setRadical}
+          labelField='text'
         />
         <AtButton type='primary' onClick={handleSubmit}>提交</AtButton>
-        <AtButton formType='reset'>重置</AtButton>
+        <AtButton formType='reset' onClick={handleRest}>重置</AtButton>
       </AtForm>
     </>
   )

@@ -1,4 +1,3 @@
 export interface Option{
-  key: string
-  title: string | number
+  [key: string]: any
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": ["taro/react"],
+  "extends": ["taro/react" ],
   "rules": {
     'indent': ['error', 2],
     'linebreak-style': 0,

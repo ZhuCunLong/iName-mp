@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import _ from 'lodash'
 import React, { useMemo } from 'react'
 import { Picker } from '@tarojs/components'
 import { AtList, AtListItem } from 'taro-ui'
@@ -11,17 +11,21 @@ interface SelectProps {
   onChange: (value: any) => void
   value: string | number
   labelField?: string
+  valueField?: string
 }
 
 const Select: React.FC<SelectProps> = (props) => {
-  const { optionList, onChange, value, title, labelField } = props
+  const { optionList, onChange, value, title, labelField, valueField = 'id' } = props
 
   const handleChange = (e:any)=> {
     const item = optionList[e.detail.value]
     if(_.isString(item) || _.isNumber(item)) {
       onChange(item)
     } else {
-      onChange(item.key)
+      if(!_.has(item, valueField)) {
+        throw Error('please set valueField or check item of optionList whether miss required valueField')
+      }
+      onChange(item[valueField])
     }
   }
 
@@ -30,9 +34,9 @@ const Select: React.FC<SelectProps> = (props) => {
     if(!labelField) {
       return value.toString()
     }
-    const res = (optionList as Option[]).find(item => item.key === value)
-    return res?.title.toString()
-  }, [value, optionList, labelField])
+    const res = (optionList as Option[]).find(item => item[valueField] === value)
+    return (res as Option)[labelField].toString()
+  }, [value, optionList, labelField, valueField])
 
   return (
     <Picker mode='selector' range={optionList} rangeKey={labelField} onChange={handleChange}>
