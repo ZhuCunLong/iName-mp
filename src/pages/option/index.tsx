@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AtForm, AtInput, AtButton, AtModal } from 'taro-ui'
+import { AtForm, AtInput, AtButton } from 'taro-ui'
 import Select from '@/components/Select'
 import { radicalList } from '@/constants'
 
